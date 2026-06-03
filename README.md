@@ -1,0 +1,1 @@
+This is the source for https://wehavewineathome.app, hosted by GitHub Pages. No application code is hosted here, just the public facing website.

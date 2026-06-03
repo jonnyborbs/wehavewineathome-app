@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — We Have Wine at Home</title>
+  <meta name="description" content="Privacy policy for We Have Wine at Home. No data collection, no accounts, no tracking." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --burgundy: #6B2737;
+      --burgundy-dark: #4A1825;
+      --burgundy-light: #8B3A4C;
+      --gold: #C9913D;
+      --gold-light: #E4B96A;
+      --cream: #F7F1E8;
+      --charcoal: #1E1A17;
+      --text-muted: rgba(247, 241, 232, 0.6);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--charcoal);
+      color: var(--cream);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(30, 26, 23, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201, 145, 61, 0.2);
+    }
+
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-back {
+      color: rgba(247, 241, 232, 0.6);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .nav-back:hover { color: var(--gold-light); }
+
+    /* ── HEADER ── */
+    .page-header {
+      padding: 8rem 2rem 4rem;
+      text-align: center;
+      background: radial-gradient(ellipse at 50% 0%, rgba(107, 39, 55, 0.4) 0%, transparent 60%),
+                  var(--charcoal);
+      border-bottom: 1px solid rgba(201, 145, 61, 0.12);
+    }
+
+    .page-header .eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+
+    .page-header .updated {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* ── CONTENT ── */
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+
+    .summary-box {
+      background: rgba(107, 39, 55, 0.15);
+      border: 1px solid rgba(107, 39, 55, 0.35);
+      border-radius: 8px;
+      padding: 1.75rem 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .summary-box p {
+      font-size: 1rem;
+      color: rgba(247, 241, 232, 0.85);
+      line-height: 1.7;
+    }
+
+    .summary-box strong { color: var(--cream); }
+
+    .policy-section {
+      margin-bottom: 3rem;
+    }
+
+    .policy-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      color: var(--cream);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(201, 145, 61, 0.15);
+    }
+
+    .policy-section p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 0.85rem;
+    }
+
+    .policy-section p:last-child { margin-bottom: 0; }
+
+    .policy-section ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin: 0.75rem 0;
+    }
+
+    .policy-section li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .policy-section li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+      margin-top: 0.55em;
+    }
+
+    .contact-block {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 1.75rem 2rem;
+      margin-top: 3rem;
+    }
+
+    .contact-block h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--cream);
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-block p { font-size: 0.95rem; color: var(--text-muted); }
+
+    .contact-block a { color: var(--gold-light); text-decoration: none; }
+    .contact-block a:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: rgba(10, 8, 7, 0.95);
+      border-top: 1px solid rgba(201, 145, 61, 0.15);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links a {
+      color: rgba(247, 241, 232, 0.45);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold-light); }
+
+    .footer-copy { font-size: 0.8rem; color: rgba(247, 241, 232, 0.25); }
+
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.25rem; }
+      .content { padding: 3rem 1.25rem 5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-brand" href="/">We Have Wine at Home</a>
+    <a class="nav-back" href="/">← Back to Home</a>
+  </nav>
+
+  <div class="page-header">
+    <p class="eyebrow">Legal</p>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated June 3, 2026</p>
+  </div>
+
+  <div class="content">
+
+    <div class="summary-box">
+      <p><strong>The short version:</strong> We Have Wine at Home does not collect, transmit, or share any of your personal data. Your inventory lives entirely on your device and in your own iCloud account. We have no servers, no accounts, and no analytics.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>1. Overview</h2>
+      <p>We Have Wine at Home ("the App") is an iOS and iPadOS application for tracking personal drink inventories. This Privacy Policy describes how the App handles information. It applies to the App and the website at wehavewineathome.app.</p>
+      <p>By using the App, you agree to this policy. Because we collect no personal data, there is very little here to agree to.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>2. Data We Do Not Collect</h2>
+      <p>We do not collect, store, transmit, or sell any of the following:</p>
+      <ul>
+        <li>Your name, email address, or any account credentials</li>
+        <li>Your inventory data, including bottle records, notes, prices, or photos</li>
+        <li>Your device identifiers or location</li>
+        <li>Usage analytics, crash reports, or behavioral telemetry</li>
+        <li>Any data whatsoever through the App</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>3. Where Your Data Lives</h2>
+      <p>All inventory data you enter into the App is stored in two places, both entirely under your control:</p>
+      <ul>
+        <li><strong>On-device storage</strong> — managed by SwiftData on your iPhone or iPad</li>
+        <li><strong>Your personal iCloud account</strong> — used for syncing data across your devices via CloudKit</li>
+      </ul>
+      <p>No data is ever transmitted to our servers because we do not operate any servers. iCloud sync is handled entirely by Apple under Apple's own privacy policy and terms of service. We never have access to your iCloud data.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>4. Photos</h2>
+      <p>When you photograph a label within the App, the photo is saved to a dedicated "Wine Labels" album in your device's photo library. Photos are stored locally on your device and may be synced to iCloud Photos if you have that enabled — this is governed by Apple's policies, not ours. We do not receive or store your photos.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>5. Import and Export</h2>
+      <p>The App can import and export your inventory as a CSV file. When you export, the file is shared through iOS's system share sheet — you control where it goes (Files, AirDrop, email, etc.). We do not receive or have access to exported files.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>6. Third-Party Services</h2>
+      <p>The App uses no third-party analytics SDKs, advertising networks, or data-sharing integrations. The only external service involved in App operation is iCloud, which is Apple's service subject to Apple's privacy policy.</p>
+      <p>This website uses Google Fonts to load typefaces. Google Fonts may log the request to serve font files; see Google's privacy policy for details. No other third-party scripts are loaded by this website.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>7. Children's Privacy</h2>
+      <p>The App is not directed at children under 13. We do not knowingly collect any information from children. Because we collect no information from anyone, this section is largely precautionary.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>8. Changes to This Policy</h2>
+      <p>If we ever change our privacy practices in a material way, we will update this page and revise the "Last updated" date at the top. Because we do not have your contact information, we cannot notify you directly — please check this page periodically if you are concerned.</p>
+    </div>
+
+    <div class="contact-block">
+      <h2>Questions?</h2>
+      <p>If you have questions about this policy or the App's privacy practices, you can reach us at <a href="mailto:support@wehavewineathome.app">support@wehavewineathome.app</a>.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-brand">We Have Wine at Home</div>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 We Have Wine at Home. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

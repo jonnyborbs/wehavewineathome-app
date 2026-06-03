@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>We Have Wine at Home — Your Personal Cellar, Always with You</title>
+  <meta name="description" content="Track your wine, beer, and spirits collection on iPhone and iPad. Visual cellar management, iCloud sync, and complete privacy. No subscriptions." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --burgundy: #6B2737;
+      --burgundy-dark: #4A1825;
+      --burgundy-light: #8B3A4C;
+      --gold: #C9913D;
+      --gold-light: #E4B96A;
+      --cream: #F7F1E8;
+      --cream-dark: #EDE4D3;
+      --charcoal: #1E1A17;
+      --warm-gray: #5C5248;
+      --text: #2A2420;
+      --text-muted: #7A6E66;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--charcoal);
+      color: var(--cream);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(30, 26, 23, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201, 145, 61, 0.2);
+    }
+
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      transition: opacity 0.2s, color 0.2s;
+    }
+
+    .nav-links a:hover { opacity: 1; color: var(--gold-light); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 6rem;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 50% 0%, rgba(107, 39, 55, 0.5) 0%, transparent 70%),
+                  radial-gradient(ellipse at 80% 100%, rgba(74, 24, 37, 0.3) 0%, transparent 50%),
+                  var(--charcoal);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(201, 145, 61, 0.06) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(107, 39, 55, 0.12) 0%, transparent 40%);
+      pointer-events: none;
+    }
+
+    /* subtle wood grain texture via repeating-linear-gradient */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        105deg,
+        transparent 0px,
+        transparent 80px,
+        rgba(255,255,255,0.012) 80px,
+        rgba(255,255,255,0.012) 82px
+      );
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 7vw, 5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--cream);
+      max-width: 16ch;
+      margin: 0 auto 1.5rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: rgba(247, 241, 232, 0.7);
+      max-width: 48ch;
+      margin: 0 auto 2.5rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--burgundy);
+      color: var(--cream);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.85rem 2.2rem;
+      border-radius: 4px;
+      border: 1px solid var(--burgundy-light);
+      transition: background 0.2s, transform 0.15s;
+      letter-spacing: 0.03em;
+    }
+
+    .btn-primary:hover {
+      background: var(--burgundy-light);
+      transform: translateY(-1px);
+    }
+
+    .hero-badges {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+      color: rgba(247, 241, 232, 0.45);
+    }
+
+    .hero-badges span { display: flex; align-items: center; gap: 0.35rem; }
+
+    /* ── SECTION SHELL ── */
+    section { padding: 6rem 2rem; }
+
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .section-body {
+      font-size: 1.05rem;
+      color: rgba(247, 241, 232, 0.7);
+      max-width: 56ch;
+    }
+
+    /* ── DRINKS STRIP ── */
+    .drinks-strip {
+      background: rgba(107, 39, 55, 0.12);
+      border-top: 1px solid rgba(201, 145, 61, 0.15);
+      border-bottom: 1px solid rgba(201, 145, 61, 0.15);
+      padding: 3rem 2rem;
+    }
+
+    .drinks-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(201, 145, 61, 0.12);
+      border: 1px solid rgba(201, 145, 61, 0.12);
+      border-radius: 8px;
+      overflow: hidden;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .drink-card {
+      background: rgba(30, 26, 23, 0.9);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+
+    .drink-icon {
+      font-size: 2.5rem;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .drink-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+
+    .drink-card p {
+      font-size: 0.88rem;
+      color: rgba(247, 241, 232, 0.55);
+      line-height: 1.5;
+    }
+
+    /* ── FEATURES GRID ── */
+    .features { background: var(--charcoal); }
+
+    .features-header { margin-bottom: 3.5rem; }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .feature-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(201, 145, 61, 0.12);
+      border-radius: 8px;
+      padding: 2rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(201, 145, 61, 0.3);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .feature-icon {
+      font-size: 1.5rem;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-card p {
+      font-size: 0.9rem;
+      color: rgba(247, 241, 232, 0.6);
+      line-height: 1.65;
+    }
+
+    /* ── CELLAR HIGHLIGHT ── */
+    .cellar-highlight {
+      background: linear-gradient(135deg, rgba(107, 39, 55, 0.25) 0%, rgba(74, 24, 37, 0.15) 100%);
+      border-top: 1px solid rgba(107, 39, 55, 0.4);
+      border-bottom: 1px solid rgba(107, 39, 55, 0.4);
+    }
+
+    .cellar-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .cellar-visual {
+      background: rgba(30, 26, 23, 0.8);
+      border: 1px solid rgba(201, 145, 61, 0.2);
+      border-radius: 8px;
+      padding: 1.5rem;
+      font-size: 0.8rem;
+    }
+
+    .cellar-shelf-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .cellar-row {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .slot {
+      width: 38px;
+      height: 38px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      color: rgba(255,255,255,0.85);
+      flex-shrink: 0;
+    }
+
+    .slot-red    { background: #7B2D3E; }
+    .slot-white  { background: #A89050; }
+    .slot-rose   { background: #B56070; }
+    .slot-orange { background: #A06030; }
+    .slot-empty  { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); }
+    .slot-blocked { background: repeating-linear-gradient(45deg, rgba(255,255,255,0.04), rgba(255,255,255,0.04) 3px, rgba(255,255,255,0.01) 3px, rgba(255,255,255,0.01) 6px); border: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.3); }
+
+    .shelf-divider {
+      height: 6px;
+      background: rgba(201, 145, 61, 0.25);
+      border-radius: 2px;
+      margin: 8px 0;
+    }
+
+    .cellar-content ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .cellar-content li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.92rem;
+      color: rgba(247, 241, 232, 0.7);
+    }
+
+    .cellar-content li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+      margin-top: 0.45em;
+    }
+
+    /* ── PRIVACY BLOCK ── */
+    .privacy-block { background: var(--charcoal); }
+
+    .privacy-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-top: 3rem;
+    }
+
+    .privacy-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 8px;
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+    }
+
+    .privacy-card .big-icon { font-size: 2rem; display: block; margin-bottom: 0.75rem; }
+
+    .privacy-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--cream);
+      margin-bottom: 0.4rem;
+    }
+
+    .privacy-card p { font-size: 0.85rem; color: rgba(247, 241, 232, 0.5); }
+
+    /* ── PLATFORM ── */
+    .platform { background: rgba(107, 39, 55, 0.08); }
+
+    .platform-inner {
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .platform-text { flex: 1; min-width: 260px; }
+
+    .platform-specs {
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .spec-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: rgba(247, 241, 232, 0.65);
+    }
+
+    .spec-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: rgba(10, 8, 7, 0.95);
+      border-top: 1px solid rgba(201, 145, 61, 0.15);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links a {
+      color: rgba(247, 241, 232, 0.45);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold-light); }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: rgba(247, 241, 232, 0.25);
+    }
+
+    /* ── SCREENSHOTS ── */
+    .screenshots {
+      background: linear-gradient(180deg, var(--charcoal) 0%, rgba(107,39,55,0.08) 50%, var(--charcoal) 100%);
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .screenshots .section-label,
+    .screenshots .section-title { margin: 0 auto; }
+
+    .screenshots .section-title { margin-bottom: 3.5rem; }
+
+    .devices-stage {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* iPad frame */
+    .device-ipad {
+      width: 540px;
+      aspect-ratio: 4 / 3;
+      background: #1a1612;
+      border-radius: 20px;
+      border: 3px solid #3a3530;
+      box-shadow:
+        0 0 0 1px #0a0907,
+        0 32px 80px rgba(0,0,0,0.6),
+        inset 0 0 0 2px #2a2520;
+      position: relative;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .device-ipad::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      width: 5px;
+      height: 36px;
+      background: #2a2520;
+      border-radius: 3px;
+    }
+
+    /* iPhone frame */
+    .device-iphone {
+      width: 220px;
+      aspect-ratio: 9 / 19.5;
+      background: #1a1612;
+      border-radius: 36px;
+      border: 3px solid #3a3530;
+      box-shadow:
+        0 0 0 1px #0a0907,
+        0 32px 80px rgba(0,0,0,0.6),
+        inset 0 0 0 2px #2a2520;
+      position: relative;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .device-iphone::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 72px;
+      height: 22px;
+      background: #1a1612;
+      border-radius: 0 0 16px 16px;
+      z-index: 10;
+      border: 2px solid #2a2520;
+      border-top: none;
+    }
+
+    .device-screen {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      background: rgba(30, 26, 23, 0.6);
+    }
+
+    /* When you have a real screenshot, replace .device-screen with:
+       <img src="screenshots/ipad-cellar.png" alt="Cellar view on iPad"
+            style="width:100%;height:100%;object-fit:cover;display:block;" />
+    */
+
+    .device-screen-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(201, 145, 61, 0.6);
+    }
+
+    .device-screen-hint {
+      font-size: 0.75rem;
+      color: rgba(247, 241, 232, 0.25);
+      max-width: 160px;
+      line-height: 1.5;
+    }
+
+    .device-placeholder-icon {
+      font-size: 2rem;
+      opacity: 0.25;
+    }
+
+    .device-caption {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: rgba(247, 241, 232, 0.35);
+      letter-spacing: 0.04em;
+    }
+
+    .device-wrapper { display: flex; flex-direction: column; align-items: center; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { display: none; }
+      .drinks-grid { grid-template-columns: 1fr; }
+      .cellar-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .platform-inner { gap: 2rem; }
+      section { padding: 4rem 1.25rem; }
+      .device-ipad { width: min(90vw, 480px); }
+      .device-iphone { width: min(45vw, 200px); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-brand" href="/">We Have Wine at Home</a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#cellar">Cellar View</a></li>
+      <li><a href="#privacy">Privacy</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-eyebrow">For iPhone &amp; iPad</p>
+    <h1>Your cellar, always <em>in your pocket.</em></h1>
+    <p class="hero-sub">Track your wine, beer, and spirits collection with a visual cellar map, powerful search, and complete privacy. No subscriptions, no accounts, no servers.</p>
+    <a href="#features" class="btn-primary">Explore the Features</a>
+    <div class="hero-badges">
+      <span>🍷 Wine</span>
+      <span>🍺 Beer</span>
+      <span>🥃 Spirits</span>
+      <span>·</span>
+      <span>iCloud Sync</span>
+      <span>·</span>
+      <span>No Subscription</span>
+    </div>
+  </section>
+
+  <!-- SCREENSHOTS -->
+  <section class="screenshots" id="screenshots">
+    <p class="section-label">See It in Action</p>
+    <h2 class="section-title" style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);color:var(--cream);line-height:1.2;margin-bottom:3.5rem;">Built for iPhone &amp; iPad.</h2>
+    <div class="devices-stage">
+
+      <div class="device-wrapper">
+        <div class="device-ipad">
+          <!-- Replace .device-screen with an <img> tag when you have the screenshot:
+               <img src="screenshots/ipad-cellar.png" alt="Cellar view on iPad" style="width:100%;height:100%;object-fit:cover;display:block;" /> -->
+          <div class="device-screen">
+            <span class="device-placeholder-icon">🍷</span>
+            <span class="device-screen-label">iPad screenshot</span>
+            <span class="device-screen-hint">Cellar view — coming soon</span>
+          </div>
+        </div>
+        <p class="device-caption">Cellar View — iPad</p>
+      </div>
+
+      <div class="device-wrapper">
+        <div class="device-iphone">
+          <!-- Replace .device-screen with an <img> tag when you have the screenshot:
+               <img src="screenshots/iphone-list.png" alt="Inventory list on iPhone" style="width:100%;height:100%;object-fit:cover;display:block;" /> -->
+          <div class="device-screen">
+            <span class="device-placeholder-icon">📋</span>
+            <span class="device-screen-label">iPhone screenshot</span>
+            <span class="device-screen-hint">Inventory list — coming soon</span>
+          </div>
+        </div>
+        <p class="device-caption">Inventory — iPhone</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- THREE CATEGORIES -->
+  <div class="drinks-strip">
+    <div class="container">
+      <div class="drinks-grid">
+        <div class="drink-card">
+          <span class="drink-icon">🍷</span>
+          <h3>Wine</h3>
+          <p>Full varietal, vintage, producer, color, and style tracking across Red, White, Rosé, Orange, Sparkling, and Dessert.</p>
+        </div>
+        <div class="drink-card">
+          <span class="drink-icon">🍺</span>
+          <h3>Beer</h3>
+          <p>Brewery and style tracking for your craft collection, from IPAs to stouts.</p>
+        </div>
+        <div class="drink-card">
+          <span class="drink-icon">🥃</span>
+          <h3>Spirits</h3>
+          <p>Producer, distillery, and style tracking for whiskey, gin, rum, and everything else in your cabinet.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="features-header">
+        <p class="section-label">Everything You Need</p>
+        <h2 class="section-title">Serious tools for serious collectors.</h2>
+        <p class="section-body">From a quick swipe to mark a bottle consumed to deep filter and sort options, every feature is built for how you actually use your collection.</p>
+      </div>
+
+      <div class="features-grid">
+
+        <div class="feature-card">
+          <span class="feature-icon">📦</span>
+          <h3>Master Records &amp; Individual Bottles</h3>
+          <p>One entry for "2022 Cakebread Chardonnay" can represent six bottles — each with its own location, price, acquisition date, and consumed status.</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">📍</span>
+          <h3>Precise Location Tracking</h3>
+          <p>Free-text locations with autocomplete, or assign bottles to exact cellar slots. Always know where every bottle lives.</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">🔍</span>
+          <h3>Powerful Search &amp; Filter</h3>
+          <p>Live search across name, producer, location, and notes. Field-specific filters — color, varietal, vintage, style — shown as dismissible chips. Sort by name, price, vintage, date acquired, and more.</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">👆</span>
+          <h3>Swipe to Consume</h3>
+          <p>Swipe left on any row to mark a bottle consumed in one gesture. Multi-bottle entries consume the oldest active bottle first. Undo anytime.</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">📸</span>
+          <h3>Label Photos</h3>
+          <p>Photograph labels at the moment of purchase or selection. Photos are saved to a dedicated "Wine Labels" album in your photo library and shown as thumbnails throughout the app.</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">📥</span>
+          <h3>Import &amp; Export CSV</h3>
+          <p>Bulk-load your existing inventory from a spreadsheet, or export everything as a CSV to share. The format is fully round-trippable. A bundled sample dataset of ~75 bottles gets you started immediately.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CELLAR VIEW -->
+  <section class="cellar-highlight" id="cellar">
+    <div class="container">
+      <div class="cellar-inner">
+
+        <div class="cellar-visual">
+          <div class="cellar-shelf-label">Front Room — Shelf 1 (Front)</div>
+          <div class="cellar-row">
+            <div class="slot slot-red">Cab</div>
+            <div class="slot slot-red">Pinot</div>
+            <div class="slot slot-white">Chard</div>
+            <div class="slot slot-rose">Rosé</div>
+            <div class="slot slot-white">SB</div>
+            <div class="slot slot-empty"></div>
+          </div>
+          <div class="shelf-divider"></div>
+          <div class="cellar-shelf-label">Front Room — Shelf 1 (Back)</div>
+          <div class="cellar-row">
+            <div class="slot slot-red">Merlot</div>
+            <div class="slot slot-orange">Orange</div>
+            <div class="slot slot-blocked">⊘</div>
+            <div class="slot slot-white">Ries</div>
+            <div class="slot slot-red">Syrah</div>
+            <div class="slot slot-empty"></div>
+          </div>
+          <div class="shelf-divider"></div>
+          <div class="cellar-shelf-label">Front Room — Shelf 2 (Front)</div>
+          <div class="cellar-row">
+            <div class="slot slot-white">Chard</div>
+            <div class="slot slot-red">Pinot</div>
+            <div class="slot slot-empty"></div>
+            <div class="slot slot-empty"></div>
+            <div class="slot slot-rose">Rosé</div>
+            <div class="slot slot-red">Cab</div>
+          </div>
+        </div>
+
+        <div class="cellar-content">
+          <p class="section-label">Visual Cellar Management</p>
+          <h2 class="section-title">See your entire cellar at a glance.</h2>
+          <p class="section-body">Switch to Cellar View for a color-coded visual grid of every slot. Red, white, rosé, orange, sparkling, dessert — each color has its own shade so you can spot exactly what you want at a glance.</p>
+          <ul>
+            <li>Create multiple named cellars — "Front Room", "Garage Fridge", and more</li>
+            <li>Configure each cellar with custom shelves and slot counts</li>
+            <li>Tap any slot to assign or view a bottle</li>
+            <li>Block slots for broad-shouldered bottles</li>
+            <li>Add a new wine and place it directly from any empty slot</li>
+            <li>Mark consumed or remove from the cellar right from the slot view</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIVACY -->
+  <section class="privacy-block" id="privacy">
+    <div class="container">
+      <p class="section-label">Your Data, Your Business</p>
+      <h2 class="section-title">Privacy isn't a feature — it's the foundation.</h2>
+      <p class="section-body">We Have Wine at Home has no accounts, no backend, no analytics, and no tracking. Your collection data stays entirely on your device and in your personal iCloud account.</p>
+
+      <div class="privacy-cards">
+        <div class="privacy-card">
+          <span class="big-icon">🔒</span>
+          <h4>No Accounts Required</h4>
+          <p>Open the app and start adding bottles. No sign-up, no email, no password.</p>
+        </div>
+        <div class="privacy-card">
+          <span class="big-icon">☁️</span>
+          <h4>iCloud Sync</h4>
+          <p>Data syncs automatically across your iPhone and iPad through your own iCloud account — never our servers.</p>
+        </div>
+        <div class="privacy-card">
+          <span class="big-icon">📵</span>
+          <h4>No Analytics</h4>
+          <p>Zero tracking, zero telemetry. We never see what you drink, what you buy, or how you use the app.</p>
+        </div>
+        <div class="privacy-card">
+          <span class="big-icon">📶</span>
+          <h4>Works Offline</h4>
+          <p>Full functionality without an internet connection. Syncs when connectivity is restored.</p>
+        </div>
+      </div>
+
+      <p style="margin-top: 2rem; font-size: 0.9rem; color: rgba(247,241,232,0.4);">
+        Read our full <a href="privacy.html" style="color: var(--gold-light); text-decoration: none;">Privacy Policy →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- PLATFORM -->
+  <section class="platform">
+    <div class="container">
+      <div class="platform-inner">
+        <div class="platform-text">
+          <p class="section-label">Platform</p>
+          <h2 class="section-title">Native iOS &amp; iPadOS.</h2>
+          <p class="section-body">Built with SwiftUI and SwiftData for a fast, polished experience on every device. Add and edit dialogs use full-screen presentation on iPad for comfortable data entry. Dark mode by default.</p>
+        </div>
+        <div class="platform-specs">
+          <div class="spec-row"><span class="spec-dot"></span> iPhone &amp; iPad</div>
+          <div class="spec-row"><span class="spec-dot"></span> Requires iOS 17 or later</div>
+          <div class="spec-row"><span class="spec-dot"></span> Dark mode by default</div>
+          <div class="spec-row"><span class="spec-dot"></span> Optimized for portrait &amp; landscape</div>
+          <div class="spec-row"><span class="spec-dot"></span> No subscription, no in-app purchases</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-brand">We Have Wine at Home</div>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 We Have Wine at Home. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
