@@ -5,6 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy — We Have Wine at Home!</title>
   <meta name="description" content="Privacy policy for We Have Wine at Home. No ads, data collection, accounts, or tracking." />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="screenshots/app-icon-32.png" />
+  <link rel="icon" type="image/png" sizes="64x64" href="screenshots/app-icon-64.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="screenshots/app-icon-180.png" />
+
+  <!-- Social / OG preview -->
+  <meta property="og:title" content="Privacy Policy — We Have Wine at Home!" />
+  <meta property="og:description" content="No data collection, no accounts, no tracking. Your inventory stays on your device." />
+  <meta property="og:image" content="screenshots/app-icon-512.png" />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Privacy Policy — We Have Wine at Home!" />
+  <meta name="twitter:description" content="No data collection, no accounts, no tracking. Your inventory stays on your device." />
+  <meta name="twitter:image" content="screenshots/app-icon-512.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -22,11 +40,14 @@
       --text-muted: rgba(247, 241, 232, 0.6);
     }
 
+    html { overflow-x: hidden; }
+
     body {
       font-family: 'Inter', sans-serif;
       background: var(--charcoal);
       color: var(--cream);
       line-height: 1.7;
+      overflow-x: hidden;
     }
 
     /* ── NAV ── */
@@ -225,11 +246,15 @@
 <body>
 
   <nav>
-    <a class="nav-brand" href="/">We Have Wine at Home!</a>
+    <a class="nav-brand" href="/">
+      <img src="screenshots/app-icon-64.png" alt="" width="40" height="40" style="border-radius:10px;vertical-align:middle;margin-right:0.5rem;margin-bottom:2px;" />
+      We Have Wine at Home!
+    </a>
     <a class="nav-back" href="/">← Back to Home</a>
   </nav>
 
   <div class="page-header">
+    <img src="screenshots/app-icon-180.png" alt="We Have Wine at Home! app icon" width="100" height="100" style="border-radius:22px;margin-bottom:1.25rem;box-shadow:0 8px 32px rgba(0,0,0,0.5);" />
     <p class="eyebrow">Legal</p>
     <h1>Privacy Policy</h1>
     <p class="updated">Last updated June 3, 2026</p>

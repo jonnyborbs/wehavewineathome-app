@@ -5,6 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>We Have Wine at Home! — Your Personal Bar Tracker, Always with You</title>
   <meta name="description" content="Track your wine, beer, and spirits collection on iPhone and iPad. Visual cellar management, iCloud sync, and complete privacy. No subscriptions, ads, in-app purchases or tracking." />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="screenshots/app-icon-32.png" />
+  <link rel="icon" type="image/png" sizes="64x64" href="screenshots/app-icon-64.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="screenshots/app-icon-180.png" />
+
+  <!-- Social / OG preview -->
+  <meta property="og:title" content="We Have Wine at Home!" />
+  <meta property="og:description" content="Track your wine, beer, and spirits. Visual cellar management, iCloud sync, zero ads. Free for iPhone &amp; iPad." />
+  <meta property="og:image" content="screenshots/app-icon-512.png" />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="We Have Wine at Home!" />
+  <meta name="twitter:description" content="Track your wine, beer, and spirits. Visual cellar management, iCloud sync, zero ads. Free for iPhone &amp; iPad." />
+  <meta name="twitter:image" content="screenshots/app-icon-512.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -25,13 +43,17 @@
       --text-muted: #7A6E66;
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
 
     body {
       font-family: 'Inter', sans-serif;
       background: var(--charcoal);
       color: var(--cream);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     /* ── NAV ── */
@@ -313,6 +335,8 @@
       border-radius: 8px;
       padding: 1.5rem;
       font-size: 0.8rem;
+      overflow-x: auto;
+      min-width: 0;
     }
 
     .cellar-shelf-label {
@@ -331,17 +355,18 @@
     }
 
     .slot {
-      width: 38px;
-      height: 38px;
+      width: clamp(28px, 5vw, 38px);
+      height: clamp(28px, 5vw, 38px);
       border-radius: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.6rem;
+      font-size: clamp(0.45rem, 1vw, 0.6rem);
       font-weight: 600;
       letter-spacing: 0.03em;
       color: rgba(255,255,255,0.85);
-      flex-shrink: 0;
+      flex-shrink: 1;
+      min-width: 0;
     }
 
     .slot-red    { background: #7B2D3E; }
@@ -573,7 +598,7 @@
 
     /* iPad frame */
     .device-ipad {
-      width: 540px;
+      width: min(540px, 90vw);
       aspect-ratio: 4 / 3;
       background: #1a1612;
       border-radius: 20px;
@@ -601,7 +626,7 @@
 
     /* iPhone frame */
     .device-iphone {
-      width: 220px;
+      width: min(220px, 42vw);
       aspect-ratio: 9 / 19.5;
       background: #1a1612;
       border-radius: 36px;
@@ -679,19 +704,31 @@
     @media (max-width: 768px) {
       nav { padding: 1rem 1.25rem; }
       .nav-links { display: none; }
+      .drinks-strip { padding: 2rem 1.25rem; }
       .drinks-grid { grid-template-columns: 1fr; }
       .cellar-inner { grid-template-columns: 1fr; gap: 2.5rem; }
       .platform-inner { gap: 2rem; }
       section { padding: 4rem 1.25rem; }
-      .device-ipad { width: min(90vw, 480px); }
-      .device-iphone { width: min(45vw, 200px); }
+      .devices-stage { gap: 1.5rem; }
+      /* On narrow screens stack the two devices vertically */
+      .device-iphone { width: min(220px, 55vw); }
+    }
+
+    @media (max-width: 480px) {
+      .devices-stage { flex-direction: column; align-items: center; }
+      .device-ipad { width: min(480px, 92vw); }
+      .device-iphone { width: min(200px, 60vw); }
+      .hero { padding: 7rem 1.25rem 5rem; }
     }
   </style>
 </head>
 <body>
 
   <nav>
-    <a class="nav-brand" href="/">We Have Wine at Home!</a>
+    <a class="nav-brand" href="/">
+      <img src="screenshots/app-icon-64.png" alt="" width="40" height="40" style="border-radius:10px;vertical-align:middle;margin-right:0.5rem;margin-bottom:2px;" />
+      We Have Wine at Home!
+    </a>
     <ul class="nav-links">
       <li><a href="#features">Features</a></li>
       <li><a href="#cellar">Cellar View</a></li>
@@ -702,6 +739,7 @@
 
   <!-- HERO -->
   <section class="hero">
+    <img src="screenshots/app-icon-180.png" alt="We Have Wine at Home! app icon" width="140" height="140" style="border-radius:32px;margin-bottom:1.5rem;box-shadow:0 8px 32px rgba(0,0,0,0.5);" />
     <p class="hero-eyebrow">For iPhone &amp; iPad</p>
     <h1>Your bar collection, always in <em>your pocket.</em></h1>
     <p class="hero-sub">Track your wine, beer, and spirits collection with a visual cellar map, powerful search, and complete privacy. No subscriptions, no accounts, no servers.</p>
