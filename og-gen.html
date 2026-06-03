@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background: #1E1A17;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* Background layers */
+    .bg-radial-top {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 0% 50%, rgba(107, 39, 55, 0.6) 0%, transparent 55%),
+        radial-gradient(ellipse at 100% 100%, rgba(74, 24, 37, 0.3) 0%, transparent 45%),
+        radial-gradient(ellipse at 60% 0%, rgba(201, 145, 61, 0.08) 0%, transparent 40%);
+    }
+
+    .bg-grain {
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        105deg,
+        transparent 0px, transparent 80px,
+        rgba(255,255,255,0.015) 80px, rgba(255,255,255,0.015) 82px
+      );
+    }
+
+    /* Gold border frame */
+    .frame {
+      position: absolute;
+      inset: 28px;
+      border: 1px solid rgba(201, 145, 61, 0.25);
+      border-radius: 16px;
+      pointer-events: none;
+    }
+
+    .frame-inner {
+      position: absolute;
+      inset: 32px;
+      border: 1px solid rgba(201, 145, 61, 0.08);
+      border-radius: 13px;
+      pointer-events: none;
+    }
+
+    /* Content */
+    .content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 72px;
+      padding: 0 90px;
+      width: 100%;
+    }
+
+    .icon-wrap {
+      flex-shrink: 0;
+    }
+
+    .icon-wrap img {
+      width: 180px;
+      height: 180px;
+      border-radius: 40px;
+      display: block;
+      box-shadow:
+        0 0 0 1px rgba(201,145,61,0.3),
+        0 24px 60px rgba(0,0,0,0.6),
+        0 8px 24px rgba(107,39,55,0.4);
+    }
+
+    .text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .eyebrow {
+      font-family: 'Arial', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #C9913D;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: 62px;
+      font-weight: 700;
+      line-height: 1.08;
+      color: #F7F1E8;
+      margin-bottom: 22px;
+      letter-spacing: -0.01em;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: #E4B96A;
+    }
+
+    .tagline {
+      font-family: 'Arial', sans-serif;
+      font-size: 21px;
+      color: rgba(247, 241, 232, 0.6);
+      line-height: 1.5;
+      margin-bottom: 36px;
+      max-width: 520px;
+    }
+
+    .pills {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      font-family: 'Arial', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: rgba(247,241,232,0.55);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(201,145,61,0.18);
+      border-radius: 100px;
+      padding: 6px 16px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Decorative wine glass silhouette on the right edge */
+    .deco {
+      position: absolute;
+      right: 52px;
+      bottom: 44px;
+      font-size: 140px;
+      opacity: 0.04;
+      line-height: 1;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-radial-top"></div>
+  <div class="bg-grain"></div>
+  <div class="frame"></div>
+  <div class="frame-inner"></div>
+
+  <div class="content">
+    <div class="icon-wrap">
+      <img src="screenshots/app-icon-512.png" alt="" />
+    </div>
+    <div class="text">
+      <p class="eyebrow">For iPhone &amp; iPad &nbsp;·&nbsp; Free</p>
+      <h1>We Have Wine<br /><em>at Home!</em></h1>
+      <p class="tagline">Track your wine, beer &amp; spirits. Visual cellar management. No ads, no subscriptions, no tracking.</p>
+      <div class="pills">
+        <span class="pill">🍷 Wine</span>
+        <span class="pill">🍺 Beer</span>
+        <span class="pill">🥃 Spirits</span>
+        <span class="pill">🔄 iCloud Sync</span>
+        <span class="pill">🕵️‍♀️ Private by Design</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="deco">🍷</div>
+</body>
+</html>
