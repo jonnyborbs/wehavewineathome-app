@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>We Have Wine at Home — Your Personal Cellar, Always with You</title>
-  <meta name="description" content="Track your wine, beer, and spirits collection on iPhone and iPad. Visual cellar management, iCloud sync, and complete privacy. No subscriptions." />
+  <title>We Have Wine at Home! — Your Personal Bar Tracker, Always with You</title>
+  <meta name="description" content="Track your wine, beer, and spirits collection on iPhone and iPad. Visual cellar management, iCloud sync, and complete privacy. No subscriptions, ads, in-app purchases or tracking." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -483,6 +483,74 @@
       color: rgba(247, 241, 232, 0.25);
     }
 
+    /* ── WHY ── */
+    .why {
+      background: linear-gradient(180deg, var(--charcoal) 0%, rgba(107,39,55,0.1) 100%);
+      border-bottom: 1px solid rgba(201, 145, 61, 0.12);
+    }
+
+    .why-inner {
+      max-width: 680px;
+    }
+
+    .why-inner p {
+      font-size: 1.05rem;
+      color: rgba(247, 241, 232, 0.72);
+      margin-bottom: 1.25rem;
+      line-height: 1.75;
+    }
+
+    .why-inner p:last-of-type { margin-bottom: 0; }
+
+    .why-list {
+      list-style: none;
+      margin: 0.25rem 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .why-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      font-size: 1.02rem;
+      color: rgba(247, 241, 232, 0.72);
+      line-height: 1.55;
+    }
+
+    .why-list li::before {
+      content: '🙄';
+      color: var(--burgundy-light);
+      font-size: 0.75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0.3em;
+    }
+
+    .why-callout {
+      margin: 2rem 0;
+      padding: 1.25rem 1.75rem;
+      border-left: 3px solid var(--gold);
+      background: rgba(201, 145, 61, 0.06);
+      border-radius: 0 6px 6px 0;
+      font-size: 1.05rem;
+      color: rgba(247, 241, 232, 0.85);
+      line-height: 1.7;
+    }
+
+    .why-free {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
     /* ── SCREENSHOTS ── */
     .screenshots {
       background: linear-gradient(180deg, var(--charcoal) 0%, rgba(107,39,55,0.08) 50%, var(--charcoal) 100%);
@@ -623,7 +691,7 @@
 <body>
 
   <nav>
-    <a class="nav-brand" href="/">We Have Wine at Home</a>
+    <a class="nav-brand" href="/">We Have Wine at Home!</a>
     <ul class="nav-links">
       <li><a href="#features">Features</a></li>
       <li><a href="#cellar">Cellar View</a></li>
@@ -635,17 +703,47 @@
   <!-- HERO -->
   <section class="hero">
     <p class="hero-eyebrow">For iPhone &amp; iPad</p>
-    <h1>Your cellar, always <em>in your pocket.</em></h1>
+    <h1>Your bar collection, always in <em>your pocket.</em></h1>
     <p class="hero-sub">Track your wine, beer, and spirits collection with a visual cellar map, powerful search, and complete privacy. No subscriptions, no accounts, no servers.</p>
-    <a href="#features" class="btn-primary">Explore the Features</a>
     <div class="hero-badges">
       <span>🍷 Wine</span>
       <span>🍺 Beer</span>
       <span>🥃 Spirits</span>
-      <span>·</span>
-      <span>iCloud Sync</span>
-      <span>·</span>
-      <span>No Subscription</span>
+      <span>⛰️ Define Your Own Wine Cellars</span>
+      <span>🤑 Free</span>
+      <span>🚫 No Ads</span>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="why" id="why">
+    <div class="container">
+      <div class="why-inner">
+        <p class="section-label">Why I Built This</p>
+        <h2 class="section-title">I got tired of all the nonsense. <br>I bet you did too.</h2>
+
+        <p>Look, I'm not the only one who's tried a million wine cellar management apps. They all seem to follow the same magic list of antipatterns:</p>
+
+        <ul class="why-list">
+          <li>Steep up-front purchases, with no guarantee the app does anything you actually want</li>
+          <li>Cloud backing of questionable quality, longevity, and stability</li>
+          <li>Constant attempts to monetize you further: ads, social features, "opportunities to purchase," suggested drinks, who knows what else</li>
+        </ul>
+
+        <p>If you're like me, you already know why you bought what you bought. You don't need suggestions on what else to buy. You just have a lot of wine and other stuff to keep track of, and you want to know what you have, how much of it, and where it is.</p>
+
+        <p>I built this for myself, because I just wanted something that worked. I fixed all the things I hated about the other apps in my workflow design here. I didn't build features I never used.</p>
+
+        <p>Is it perfect? No. Will it keep evolving, getting better as I discover new things to be mad at? Definitely.</p>
+
+        <div class="why-callout">
+          We Have Wine at Home! stores your data locally on your device and optionally syncs it across all your devices through iCloud — <em>your</em> iCloud, not mine. Easy CSV import and export means you're always in control of your own data.
+        </div>
+
+        <p>The cellar manager lets you define your actual physical cellars, customize shelves and slot counts, and visually place bottles exactly where they live. Overflowing into boxes, the guest room bathtub, or your office mini-fridge? That's fine — bottle placement is as flexible as your collection demands.</p>
+        <br>
+        <span class="why-free">🎉 Free. No ads. No subscriptions. No in-app purchases. I built this for myself. If it helps you too, I'm super stoked to hear it.</span>
+      </div>
     </div>
   </section>
 
