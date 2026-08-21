@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — We Have Wine at Home!</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="images/app-icon-32.png" />
+  <link rel="icon" type="image/png" sizes="64x64" href="images/app-icon-64.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --burgundy: #6B2737;
+      --burgundy-light: #8B3A4C;
+      --gold: #C9913D;
+      --gold-light: #E4B96A;
+      --cream: #F7F1E8;
+      --charcoal: #1E1A17;
+    }
+
+    html, body {
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--charcoal);
+      color: var(--cream);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 2rem;
+      background:
+        radial-gradient(ellipse at 50% 20%, rgba(107, 39, 55, 0.45) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 90%, rgba(74, 24, 37, 0.25) 0%, transparent 50%),
+        #1E1A17;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        105deg,
+        transparent 0px, transparent 80px,
+        rgba(255,255,255,0.012) 80px, rgba(255,255,255,0.012) 82px
+      );
+      pointer-events: none;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(30, 26, 23, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201, 145, 61, 0.2);
+    }
+
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-brand img { border-radius: 7px; vertical-align: middle; }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      max-width: 540px;
+    }
+
+    .glass {
+      font-size: 6rem;
+      display: block;
+      margin-bottom: 1.5rem;
+      animation: tilt 3s ease-in-out infinite;
+      transform-origin: bottom center;
+    }
+
+    @keyframes tilt {
+      0%, 100% { transform: rotate(-6deg); }
+      50%       { transform: rotate(6deg); }
+    }
+
+    .code {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(5rem, 20vw, 9rem);
+      font-weight: 700;
+      line-height: 1;
+      color: var(--burgundy-light);
+      opacity: 0.35;
+      letter-spacing: -0.04em;
+      margin-bottom: -1rem;
+      user-select: none;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 5vw, 2.4rem);
+      color: var(--cream);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    p {
+      font-size: 1rem;
+      color: rgba(247, 241, 232, 0.6);
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--burgundy);
+      color: var(--cream);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.85rem 2.2rem;
+      border-radius: 4px;
+      border: 1px solid var(--burgundy-light);
+      transition: background 0.2s, transform 0.15s;
+      letter-spacing: 0.03em;
+    }
+
+    .btn:hover {
+      background: var(--burgundy-light);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 480px) {
+      nav { padding: 1rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-brand" href="/">
+      <img src="images/app-icon-64.png" alt="" width="40" height="40" />
+      We Have Wine at Home!
+    </a>
+  </nav>
+
+  <div class="content">
+    <span class="code">404</span>
+    <span class="glass">🫗</span>
+    <h1>Looks like this bottle's <em>already been consumed.</em></h1>
+    <p>The page you're looking for isn't here — it may have been moved, renamed, or never existed in the first place. Easy enough to do after a few glasses.</p>
+    <a class="btn" href="/">Take Me Home</a>
+  </div>
+
+</body>
+</html>
